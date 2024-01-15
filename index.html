@@ -13,6 +13,7 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
+      position: relative;
     }
 
     #timer {
@@ -24,13 +25,66 @@
       display: flex;
       gap: 10px;
     }
+
+    #leftBtn, #rightBtn, #leftDecreaseBtn, #rightDecreaseBtn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      font-size: 1em;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #leftBtn {
+      left: 10px;
+      background-color: red;
+      color: white;
+    }
+
+    #rightBtn {
+      right: 10px;
+      background-color: red;
+      color: white;
+    }
+
+    #leftDecreaseBtn {
+      left: 60px;
+      background-color: grey;
+      color: white;
+    }
+
+    #rightDecreaseBtn {
+      right: 60px;
+      background-color: grey;
+      color: white;
+    }
+
+    #leftValue, #rightValue {
+      position: absolute;
+      top: 10px;
+      color: red;
+      font-size: 1.2em;
+    }
+
+    #leftValue {
+      left: 10px;
+    }
+
+    #rightValue {
+      right: 10px;
+    }
   </style>
 </head>
 <body>
 
 <label for="timeInput">Set Countdown Time (HH:MM:SS): </label>
 <input type="text" id="timeInput" placeholder="00:05:00">
-<button onclick="startTimer()">Start Countdown</button>
+<button onclick="startTimer()" id="startButton">Start Countdown</button>
+<button onclick="resetTimer()">Reset</button>
+<button onclick="clearTimer()">Clear</button>
 
 <div id="timer"></div>
 <div id="controls">
@@ -38,9 +92,20 @@
   <button onclick="resumeTimer()">Resume</button>
 </div>
 
+<button id="leftBtn" onclick="increaseCounter('left')">+</button>
+<button id="rightBtn" onclick="increaseCounter('right')">+</button>
+<button id="leftDecreaseBtn" onclick="decreaseCounter('left')">-</button>
+<button id="rightDecreaseBtn" onclick="decreaseCounter('right')">-</button>
+
+<p id="leftValue">Left Value: 0</p>
+<p id="rightValue">Right Value: 0</p>
+
 <script>
   let timer;
   let totalSeconds;
+  let initialTime;
+  let leftCounter = 0;
+  let rightCounter = 0;
 
   function startTimer() {
     const inputTime = document.getElementById('timeInput').value;
@@ -51,9 +116,29 @@
       return;
     }
 
+    initialTime = totalSeconds;
+
+    document.getElementById('startButton').disabled = true;
+
     clearInterval(timer);
     updateTimerDisplay();
     timer = setInterval(updateTimer, 1000);
+  }
+
+  function resetTimer() {
+    if (initialTime !== undefined) {
+      totalSeconds = initialTime;
+      updateTimerDisplay();
+      document.getElementById('startButton').disabled = false;
+    }
+  }
+
+  function clearTimer() {
+    totalSeconds = 0;
+    initialTime = undefined;
+    document.getElementById('timeInput').value = '';
+    document.getElementById('timer').innerText = '';
+    document.getElementById('startButton').disabled = false;
   }
 
   function updateTimer() {
@@ -63,7 +148,18 @@
     } else {
       clearInterval(timer);
       alert("Countdown completed!");
+      document.getElementById('startButton').disabled = false;
     }
+  }
+
+  function pauseTimer() {
+    clearInterval(timer);
+    document.getElementById('startButton').disabled = false;
+  }
+
+  function resumeTimer() {
+    document.getElementById('startButton').disabled = true;
+    timer = setInterval(updateTimer, 1000);
   }
 
   function updateTimerDisplay() {
@@ -79,19 +175,31 @@
     return value < 10 ? `0${value}` : value;
   }
 
-  function pauseTimer() {
-    clearInterval(timer);
-  }
-
-  function resumeTimer() {
-    timer = setInterval(updateTimer, 1000);
-  }
-
   function parseTime(inputTime) {
     const timeArray = inputTime.split(':').map(Number);
     return timeArray.length === 3 ?
       timeArray[0] * 3600 + timeArray[1] * 60 + timeArray[2] :
       NaN;
+  }
+
+  function increaseCounter(direction) {
+    if (direction === 'left') {
+      leftCounter++;
+      document.getElementById('leftValue').innerText = `Left Value: ${leftCounter}`;
+    } else if (direction === 'right') {
+      rightCounter++;
+      document.getElementById('rightValue').innerText = `Right Value: ${rightCounter}`;
+    }
+  }
+
+  function decreaseCounter(direction) {
+    if (direction === 'left' && leftCounter > 0) {
+      leftCounter--;
+      document.getElementById('leftValue').innerText = `Left Value: ${leftCounter}`;
+    } else if (direction === 'right' && rightCounter > 0) {
+      rightCounter--;
+      document.getElementById('rightValue').innerText = `Right Value: ${rightCounter}`;
+    }
   }
 </script>
 
