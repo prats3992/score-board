@@ -1,0 +1,135 @@
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+#timer {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#controls {
+  display: flex;
+  gap: 10px;
+}
+
+#leftBtn,
+#rightBtn,
+#leftDecreaseBtn,
+#rightDecreaseBtn,
+#leftBtn3,
+#rightBtn3,
+#leftBtn2,
+#rightBtn2,
+#leftBtn1,
+#rightBtn1 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  font-size: 1em;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#leftBtn3 {
+  top: 60%;
+  left: 2.5%;
+  background-color: green;
+  color: white;
+}
+
+#rightBtn3 {
+  top: 60%;
+  right: 2.5%;
+  background-color: green;
+  color: white;
+}
+
+#leftBtn2 {
+  top: 70%;
+  left: 2.5%;
+  background-color: green;
+  color: white;
+}
+
+#rightBtn2 {
+  top: 70%;
+  right: 2.5%;
+  background-color: green;
+  color: white;
+}
+
+#leftBtn1 {
+  top: 80%;
+  left: 2.5%;
+  background-color: green;
+  color: white;
+}
+
+#rightBtn1 {
+  top: 80%;
+  right: 2.5%;
+  background-color: green;
+  color: white;
+}
+
+#leftBtn {
+  left: 10px;
+  background-color: red;
+  color: white;
+}
+
+#rightBtn {
+  right: 10px;
+  background-color: red;
+  color: white;
+}
+
+#leftDecreaseBtn {
+  left: 60px;
+  background-color: grey;
+  color: white;
+}
+
+#rightDecreaseBtn {
+  right: 60px;
+  background-color: grey;
+  color: white;
+}
+
+#leftValue,
+#rightValue,
+#leftScore,
+#rightScore {
+  position: absolute;
+  top: 10px;
+  color: red;
+  font-size: 1.2em;
+}
+
+#leftScore {
+  left: 10px;
+  top: 50px;
+}
+
+#rightScore {
+  right: 10px;
+  top: 50px;
+}
+
+#leftValue {
+  left: 10px;
+}
+
+#rightValue {
+  right: 10px;
+}
