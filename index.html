@@ -26,7 +26,7 @@
       gap: 10px;
     }
 
-    #leftBtn, #rightBtn, #leftDecreaseBtn, #rightDecreaseBtn {
+    #leftBtn, #rightBtn, #leftDecreaseBtn, #rightDecreaseBtn, #leftBtn3, #rightBtn3, #leftBtn2, #rightBtn2, #leftBtn1, #rightBtn1 {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -36,6 +36,48 @@
       border: none;
       border-radius: 50%;
       cursor: pointer;
+    }
+
+    #leftBtn3 {
+      top: 60%;
+      left: 2.5%;
+      background-color: green;
+      color: white;
+    }
+
+    #rightBtn3 {
+      top: 60%;
+      right: 2.5%;
+      background-color: green;
+      color: white;
+    }
+
+    #leftBtn2 {
+      top: 70%;
+      left: 2.5%;
+      background-color: green;
+      color: white;
+    }
+
+    #rightBtn2 {
+      top: 70%;
+      right: 2.5%;
+      background-color: green;
+      color: white;
+    }
+
+    #leftBtn1 {
+      top: 80%;
+      left: 2.5%;
+      background-color: green;
+      color: white;
+    }
+
+    #rightBtn1 {
+      top: 80%;
+      right: 2.5%;
+      background-color: green;
+      color: white;
     }
 
     #leftBtn {
@@ -62,11 +104,21 @@
       color: white;
     }
 
-    #leftValue, #rightValue {
+    #leftValue, #rightValue, #leftScore, #rightScore {
       position: absolute;
       top: 10px;
       color: red;
       font-size: 1.2em;
+    }
+
+    #leftScore {
+      left: 10px;
+      top: 50px;
+    }
+
+    #rightScore {
+      right: 10px;
+      top: 50px;
     }
 
     #leftValue {
@@ -92,6 +144,15 @@
   <button onclick="resumeTimer()">Resume</button>
 </div>
 
+<button id="leftBtn3" onclick="score_inc('left',3)">+3</button>
+<button id="rightBtn3" onclick="score_inc('right',3)">+3</button>
+
+<button id="leftBtn2" onclick="score_inc('left',2)">+2</button>
+<button id="rightBtn2" onclick="score_inc('right',2)">+2</button>
+
+<button id="leftBtn1" onclick="score_inc('left',1)">+1</button>
+<button id="rightBtn1" onclick="score_inc('right',1)">+1</button>
+
 <button id="leftBtn" onclick="increaseCounter('left')">+</button>
 <button id="rightBtn" onclick="increaseCounter('right')">+</button>
 <button id="leftDecreaseBtn" onclick="decreaseCounter('left')">-</button>
@@ -99,6 +160,8 @@
 
 <p id="leftValue">Left Value: 0</p>
 <p id="rightValue">Right Value: 0</p>
+<p id="leftScore">Left Team: 0</p>
+<p id="rightScore">Right Team: 0</p>
 
 <script>
   let timer;
@@ -106,6 +169,8 @@
   let initialTime;
   let leftCounter = 0;
   let rightCounter = 0;
+  let rightScore = 0;
+  let leftScore = 0;
 
   function startTimer() {
     const inputTime = document.getElementById('timeInput').value;
@@ -199,6 +264,16 @@
     } else if (direction === 'right' && rightCounter > 0) {
       rightCounter--;
       document.getElementById('rightValue').innerText = `Right Value: ${rightCounter}`;
+    }
+  }
+
+  function score_inc(direction, score) {
+    if (direction === 'left') {
+      leftScore=leftScore+score;
+      document.getElementById('leftScore').innerText = `Left Team: ${leftScore}`;
+    } else if (direction === 'right') {
+      rightScore=rightScore+score;
+      document.getElementById('rightScore').innerText = `Right Team: ${rightScore}`;
     }
   }
 </script>
