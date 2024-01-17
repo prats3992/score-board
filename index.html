@@ -1,44 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Countdown Timer</title>
-  <link rel="stylesheet" href="master.css" />
-  <script src="main.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="master.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
 
-<label for="timeInput">Set Countdown Time (HH:MM:SS): </label>
-<input type="text" id="timeInput" placeholder="00:05:00">
-<button onclick="startTimer()" id="startButton">Start Countdown</button>
-<button onclick="resetTimer()">Reset</button>
-<button onclick="clearTimer()">Clear</button>
+    <div class="form">
+      <div class="title">Score Board</div>
+      <div class="subtitle">Today is a New DAY</div>
+      <div class="subtitle">Have a Great Match</div>
+      <div class="input-container ic1">
+        <input id="timeInput" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="timeInput" class="placeholder">Countdown (HH:MM:SS)</label>
+      </div>
+    
+    <button onclick="startTimer()" id="startButton" class="submit">Start Countdown</button>
+    <button onclick="resetTimer()" class="submit">Reset</button>
+    <button onclick="clearTimer()" class="submit">Clear</button>
 
-<div id="timer"></div>
-<div id="controls">
-  <button onclick="pauseTimer()">Pause</button>
-  <button onclick="resumeTimer()">Resume</button>
-</div>
+    <div id="timer"></div>
+    <div id="controls">
+      <button onclick="pauseTimer()" class="submit">Pause</button>
+      <button onclick="resumeTimer()" class="submit">Resume</button>
+    </div>
 
-<button id="leftBtn3" onclick="score_inc('left',3)">+3</button>
-<button id="rightBtn3" onclick="score_inc('right',3)">+3</button>
+    <button id="leftBtn3" onclick="score_inc('left',3)">+3</button>
+    <button id="rightBtn3" onclick="score_inc('right',3)">+3</button>
 
-<button id="leftBtn2" onclick="score_inc('left',2)">+2</button>
-<button id="rightBtn2" onclick="score_inc('right',2)">+2</button>
+    <button id="leftBtn2" onclick="score_inc('left',2)">+2</button>
+    <button id="rightBtn2" onclick="score_inc('right',2)">+2</button>
 
-<button id="leftBtn1" onclick="score_inc('left',1)">+1</button>
-<button id="rightBtn1" onclick="score_inc('right',1)">+1</button>
+    <button id="leftBtn1" onclick="score_inc('left',1)">+1</button>
+    <button id="rightBtn1" onclick="score_inc('right',1)">+1</button>
 
-<button id="leftBtn" onclick="increaseCounter('left')">+</button>
-<button id="rightBtn" onclick="increaseCounter('right')">+</button>
-<button id="leftDecreaseBtn" onclick="decreaseCounter('left')">-</button>
-<button id="rightDecreaseBtn" onclick="decreaseCounter('right')">-</button>
+    <button id="leftBtn" onclick="increaseCounter('left')">+</button>
+    <button id="rightBtn" onclick="increaseCounter('right')">+</button>
+    <button id="leftDecreaseBtn" onclick="decreaseCounter('left')">-</button>
+    <button id="rightDecreaseBtn" onclick="decreaseCounter('right')">-</button>
 
-<p id="leftValue">Left Value: 0</p>
-<p id="rightValue">Right Value: 0</p>
-<p id="leftScore">Left Team: 0</p>
-<p id="rightScore">Right Team: 0</p>
-
-</body>
+    <p id="leftValue">L Foul: 0</p>
+    <p id="rightValue">R Foul: 0</p>
+    <p id="leftScore">L Score: 0</p>
+    <p id="rightScore">R Score: 0</p>
+  </body>
 </html>
