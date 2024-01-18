@@ -46,7 +46,7 @@ function updateTimer() {
     updateTimerDisplay();
   } else {
     clearInterval(timer);
-    alert("Countdown completed!");
+    // alert("Countdown completed!");
     document.getElementById("startButton").disabled = false;
   }
 }
@@ -86,12 +86,12 @@ function increaseCounter(direction) {
     leftCounter++;
     document.getElementById(
       "leftValue"
-    ).innerText = `Left Value: ${leftCounter}`;
+    ).innerText = `${leftCounter}`;
   } else if (direction === "right") {
     rightCounter++;
     document.getElementById(
       "rightValue"
-    ).innerText = `Right Value: ${rightCounter}`;
+    ).innerText = `${rightCounter}`;
   }
 }
 
@@ -100,23 +100,23 @@ function decreaseCounter(direction) {
     leftCounter--;
     document.getElementById(
       "leftValue"
-    ).innerText = `Left Value: ${leftCounter}`;
+    ).innerText = `${leftCounter}`;
   } else if (direction === "right" && rightCounter > 0) {
     rightCounter--;
     document.getElementById(
       "rightValue"
-    ).innerText = `Right Value: ${rightCounter}`;
+    ).innerText = `${rightCounter}`;
   }
 }
 
 function score_inc(direction, score) {
   if (direction === "left") {
     leftScore = leftScore + score;
-    document.getElementById("leftScore").innerText = `Left Team: ${leftScore}`;
+    document.getElementById("leftScore").innerText = `${leftScore}`;
   } else if (direction === "right") {
     rightScore = rightScore + score;
     document.getElementById(
       "rightScore"
-    ).innerText = `Right Team: ${rightScore}`;
+    ).innerText = `${rightScore}`;
   }
 }

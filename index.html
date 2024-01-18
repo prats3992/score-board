@@ -7,17 +7,21 @@
     <link rel="stylesheet" href="master.css" />
     <script src="main.js"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTZM7VPTNX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-NTZM7VPTNX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-NTZM7VPTNX');
-</script>
+      gtag("config", "G-NTZM7VPTNX");
+    </script>
   </head>
   <body>
-
     <div class="form">
       <div class="title">Score Board</div>
       <div class="subtitle">Today is a New DAY</div>
@@ -27,34 +31,64 @@
         <div class="cut"></div>
         <label for="timeInput" class="placeholder">Countdown (HH:MM:SS)</label>
       </div>
-    
-    <button onclick="startTimer()" id="startButton" class="submit">Start Countdown</button>
-    <button onclick="resetTimer()" class="submit">Reset</button>
-    <button onclick="clearTimer()" class="submit">Clear</button>
 
-    <div id="timer"></div>
-    <div id="controls">
-      <button onclick="pauseTimer()" class="submit">Pause</button>
-      <button onclick="resumeTimer()" class="submit">Resume</button>
-    </div>
+      <button onclick="startTimer()" id="startButton" class="submit">
+        Start Countdown
+      </button>
+      <button onclick="resetTimer()" class="submit">Reset</button>
+      <button onclick="clearTimer()" class="submit">Clear</button>
 
-    <button id="leftBtn3" onclick="score_inc('left',3)">+3</button>
-    <button id="rightBtn3" onclick="score_inc('right',3)">+3</button>
+      <div id="timer"></div>
+      <div id="controls">
+        <button onclick="pauseTimer()" class="submit" id="control">
+          Pause
+        </button>
+        <button onclick="resumeTimer()" class="submit" id="control">
+          Resume
+        </button>
+      </div>
+      <div id="controls">
+        <table>
+          <thead>
+            <tr>
+              <th>Team</th>
+              <th>Score</th>
+              <th>Foul</th>
+            </tr>
+            <tr>
+              <td>Left</td>
+              <td id="leftScore">0</td>
+              <td id="leftValue">0</td>
+            </tr>
+            <tr>
+              <td>Right</td>
+              <td id="rightScore">0</td>
+              <td id="rightValue">0</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
 
-    <button id="leftBtn2" onclick="score_inc('left',2)">+2</button>
-    <button id="rightBtn2" onclick="score_inc('right',2)">+2</button>
+      <button id="leftBtn3" onclick="score_inc('left',3)">+3</button>
+      <button id="rightBtn3" onclick="score_inc('right',3)">+3</button>
 
-    <button id="leftBtn1" onclick="score_inc('left',1)">+1</button>
-    <button id="rightBtn1" onclick="score_inc('right',1)">+1</button>
+      <button id="leftBtn2" onclick="score_inc('left',2)">+2</button>
+      <button id="rightBtn2" onclick="score_inc('right',2)">+2</button>
 
-    <button id="leftBtn" onclick="increaseCounter('left')">+</button>
-    <button id="rightBtn" onclick="increaseCounter('right')">+</button>
-    <button id="leftDecreaseBtn" onclick="decreaseCounter('left')">-</button>
-    <button id="rightDecreaseBtn" onclick="decreaseCounter('right')">-</button>
+      <button id="leftBtn1" onclick="score_inc('left',1)">+1</button>
+      <button id="rightBtn1" onclick="score_inc('right',1)">+1</button>
 
-    <p id="leftValue">L Foul: 0</p>
+      <button id="leftBtn" onclick="increaseCounter('left')">+</button>
+      <button id="rightBtn" onclick="increaseCounter('right')">+</button>
+      <button id="leftDecreaseBtn" onclick="decreaseCounter('left')">-</button>
+      <button id="rightDecreaseBtn" onclick="decreaseCounter('right')">
+        -
+      </button>
+
+      <!-- <p id="leftValue">L Foul: 0</p>
     <p id="rightValue">R Foul: 0</p>
     <p id="leftScore">L Score: 0</p>
-    <p id="rightScore">R Score: 0</p>
+    <p id="rightScore">R Score: 0</p> -->
+    </div>
   </body>
 </html>
